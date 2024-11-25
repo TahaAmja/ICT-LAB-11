@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class Animal {
+private:
+    string name;
+    int age;
+
+public:
+    Animal(string n, int a) : name(n), age(a) {}
+
+    
+    void displayInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+
+class Mammal : public Animal {
+public:
+    Mammal(string n, int a) : Animal(n, a) {}
+
+  
+    void feedBaby() {
+        cout << "Feeding baby mammal" << endl;
+    }
+};
+
+
+class Bird : public Animal {
+public:
+    Bird(string n, int a) : Animal(n, a) {
+    void layEgg() {
+        cout << "Laying an egg" << endl;
+    }
+};
+
+
+class Reptile : public Animal {
+public:
+    Reptile(string n, int a) : Animal(n, a) {}
+
+   
+    void shedSkin() {
+        cout << "Shedding skin" << endl;
+    }
+};
+
+int main() {
+    
+    Mammal m("Lion", 5);
+    Bird b("Eagle", 3);
+    Reptile r("Snake", 2);
+
+  
+    m.displayInfo();
+    m.feedBaby();
+    
+    b.displayInfo();
+    b.layEgg();
+    
+    r.displayInfo();
+    r.shedSkin();
+
+    return 0;
+}
