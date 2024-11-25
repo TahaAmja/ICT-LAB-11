@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+private:
+    string name;
+    int age;
+    
+public:
+    Person(string n, int a) : name(n), age(a) {}
+
+    string getName() { return name; }
+    void setName(string n) { name = n; }
+
+    int getAge() { return age; }
+    void setAge(int a) { age = a; }
+
+    virtual void displayInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+
+class Employee : public Person {
+private:
+    int employeeID;
+    
+public:
+    Employee(string n, int a, int id) : Person(n, a), employeeID(id) {}
+
+    void displayInfo() override {
+        cout << "Name: " << getName() << ", Age: " << getAge() << ", Employee ID: " << employeeID << endl;
+    }
+};
+
+// Derived class: Student
+class Student : public Person {
+private:
+    int studentID;
+
+public:
+    Student(string n, int a, int id) : Person(n, a), studentID(id) {}
+
+    void displayInfo() override {
+        cout << "Name: " << getName() << ", Age: " << getAge() << ", Student ID: " << studentID << endl;
+    }
+};
+
+int main() {
+    // Creating objects
+    Person p("John Doe", 30);
+    Employee e("Alice", 28, 101);
+    Student s("Bob", 20, 202);
+
+    // Displaying info
+    p.displayInfo();
+    e.displayInfo();
+    s.displayInfo();
+
+    return 0;
+}
